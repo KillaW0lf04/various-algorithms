@@ -9,5 +9,6 @@ SOURCES += \
     quicksort.cpp
 
 HEADERS += \
-    heapsort.h
+    heapsort.h \
+    quicksort.h
 
