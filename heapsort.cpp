@@ -43,7 +43,7 @@ void heapSort(int *buffer, int size) {
         buildMaxHeap(&buffer[i], size - i);
 }
 
-#define BUFFERSIZE 10
+#define BUFFERSIZE 100
 
 // Need to use a 1-index based array for this to work
 
@@ -56,14 +56,7 @@ int main()
 
     // Generate an array of random integers
     for( int i=0; i<BUFFERSIZE; i++)
-        buffer[i] = rand() % 100;
-
-    cout << "Unsorted list" << endl;
-
-    for( int i=0; i<BUFFERSIZE; i++)
-        cout << buffer[i] << ", ";
-
-    cout << endl;
+        buffer[i] = rand() % BUFFERSIZE;
 
     heapSort(buffer, BUFFERSIZE);
 
