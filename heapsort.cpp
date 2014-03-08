@@ -7,7 +7,7 @@
 
 using namespace std;
 
-
+// Assuming left and right satisfy the heap property
 void maxHeapify(int *buffer, int size, int index) {
     int left = LEFT(index);
     int right = RIGHT(index);
@@ -30,7 +30,7 @@ void maxHeapify(int *buffer, int size, int index) {
     }
 }
 
-
+// Builds a max heap from an array of integers
 void buildMaxHeap(int *buffer, int size) {
     // elements from size/2 onwards are 1 element heaps
     // which automatically satisfy the heap property
