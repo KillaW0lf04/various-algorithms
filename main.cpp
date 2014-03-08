@@ -17,11 +17,6 @@ int main(int argc, char *argv[]) {
     for( int i=0; i<BUFFERSIZE; i++)
         buffer[i] = rand() % BUFFERSIZE;
 
-    std::cout << "Unsorted list" << std::endl;
-
-    for( int i=0; i<BUFFERSIZE; i++)
-        std::cout << buffer[i] << ", ";
-
     //heapsort(buffer, BUFFERSIZE);
     quicksort(buffer, 0, BUFFERSIZE - 1);
 
