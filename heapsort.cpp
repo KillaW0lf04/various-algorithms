@@ -1,11 +1,7 @@
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
+#include "heapsort.h"
 
 #define LEFT(i) (i+1) << 1 - 1
 #define RIGHT(i) (i+1) << 1
-
-using namespace std;
 
 // Assuming left and right satisfy the heap property
 void maxHeapify(int *buffer, int size, int index) {
@@ -38,33 +34,8 @@ void buildMaxHeap(int *buffer, int size) {
         maxHeapify(buffer, size, i);
 }
 
-void heapSort(int *buffer, int size) {
+// Performs a heap sort on the given interger array
+void heapsort(int *buffer, int size) {
     for(int i=0; i<size; i++)
         buildMaxHeap(&buffer[i], size - i);
 }
-
-#define BUFFERSIZE 100
-
-// Need to use a 1-index based array for this to work
-
-int main()
-{
-    // Array to be sorted
-    int buffer[BUFFERSIZE];
-
-    srand(time(NULL));
-
-    // Generate an array of random integers
-    for( int i=0; i<BUFFERSIZE; i++)
-        buffer[i] = rand() % BUFFERSIZE;
-
-    heapSort(buffer, BUFFERSIZE);
-
-    cout << "Sorted list" << endl;
-
-    for( int i=0; i<BUFFERSIZE; i++)
-        cout << buffer[i] << ", ";
-
-    cout << endl;
-}
-
