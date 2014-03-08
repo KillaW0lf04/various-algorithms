@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define LEFT(i) (i+1)*2 - 1
-#define RIGHT(i) (i+1)*2
+#define LEFT(i) (i+1) << 1 - 1
+#define RIGHT(i) (i+1) << 1
 
 using namespace std;
 
