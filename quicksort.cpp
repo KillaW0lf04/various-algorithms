@@ -1,22 +1,34 @@
 #include <algorithm>
 
+/* buffer is the array to sort
+ * start specifies the first index in the subarray
+ * end specifies the last index in the subarray
+ * */
 void quicksort(int *buffer, int start, int end) {
-    if( start < end) {
-        int mid = buffer[end];
 
-        int divider = start;
-        for(int i=start; i < end; i++) {
-            if(buffer[i] <= mid)
-            {
-                std::swap(buffer[i], buffer[divider]);
-                divider += 1;
-            }
+    // Termination Criteria
+    if( start >= end )
+        return;
+
+    // Use the last element as the midpoint value
+    int x = buffer[end];
+
+    // Specifies the current midpoint of the partition
+    int midpoint = start;
+
+    for(int i=start; i<end; i++) {
+        if(buffer[i] <= x) {
+            std::swap(buffer[i], buffer[midpoint]);
+
+            // move the midpoint up once
+            midpoint += 1;
         }
-
-        std::swap(buffer[divider], buffer[end]);
-
-        // Recursively sort for the rest
-        quicksort(buffer, start, divider - 1);
-        quicksort(buffer, divider + 1, end);
     }
+
+    // Swap x with the midpoint
+    std::swap(buffer[end], buffer[midpoint]);
+
+    // Sort the subarrays, do not include the midpoint
+    quicksort(buffer, start, midpoint - 1);
+    quicksort(buffer, midpoint + 1, end);
 }
