@@ -3,23 +3,25 @@
 
 #include <string>
 
+#define BUFFERSIZE 10
+
 typedef struct {
-    std::string key;
+    std::string* key;
     int value;
-} KeyValuePair;
+} HashObject;
 
 class Hashtable
 {
 public:
     Hashtable();
 
-    void add(std::string key, int value);
-    int get(std::string key);
-    void remove(std::string key);
+    void add(std::string *key, int value);
+    int get(std::string *key);
+    bool remove(std::string *key);
 private:
-    int hash(std::string key);
+    int hash(std::string *key, int round);
 
-    KeyValuePair *buffer;
+    HashObject *buffer;
 };
 
 #endif // HASHTABLE_H
