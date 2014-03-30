@@ -5,9 +5,8 @@
  * end specifies the last index in the subarray
  * */
 void quicksort(int *buffer, int start, int end) {
-
     // Termination Criteria
-    if( start >= end )
+    if (start >= end)
         return;
 
     // Use the last element as the midpoint value
@@ -16,8 +15,8 @@ void quicksort(int *buffer, int start, int end) {
     // Specifies the current midpoint of the partition
     int midpoint = start;
 
-    for(int i=start; i<end; i++) {
-        if(buffer[i] <= x) {
+    for (int i = start; i < end; i++) {
+        if (buffer[i] <= x) {
             std::swap(buffer[i], buffer[midpoint]);
 
             // move the midpoint up once
