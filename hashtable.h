@@ -7,7 +7,7 @@
 
 typedef struct {
     std::string* key;
-    int value;
+    int *value;
 } HashObject;
 
 class Hashtable
@@ -15,8 +15,8 @@ class Hashtable
 public:
     Hashtable();
 
-    void add(std::string *key, int value);
-    int get(std::string *key);
+    void add(std::string *key, int *value);
+    int *get(std::string *key);
     bool remove(std::string *key);
 private:
     int hash(std::string *key, int round);

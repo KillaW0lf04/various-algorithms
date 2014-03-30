@@ -71,7 +71,7 @@ int Hashtable::hash(std::string *key, int round) {
 
     int total = 0;
     for (uint i=0; i < key->size(); i++) {
-        total += static_cast<int>((*key)[i]);
+        total += static_cast<int>((*key)[i]) * (round + 1);
     }
 
     return total % BUFFERSIZE;
