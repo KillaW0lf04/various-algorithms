@@ -7,7 +7,6 @@
 // Hashtable implementation using Open Addressing
 
 // TODOLIST(ma13673):
-//  * Change value to a pointer
 //  * Use Templates to alllow generic keys and values to be inserted
 //  * proper hash function
 
@@ -16,11 +15,13 @@ Hashtable::Hashtable() {
                     malloc(sizeof(HashObject) * BUFFERSIZE));
 
     // Initialise the buffer space
-    for (int i = 0; i < BUFFERSIZE; i++)
+    for (int i = 0; i < BUFFERSIZE; i++) {
         this->buffer[i].key = NULL;
+        this->buffer[i].value = NULL;
+    }
 }
 
-void Hashtable::add(std::string *key, int value) {
+void Hashtable::add(std::string *key, int *value) {
     // Continue searching for an open space
     int i = 0;
     int hashKey = -1;
@@ -32,15 +33,14 @@ void Hashtable::add(std::string *key, int value) {
     this->buffer[hashKey].value = value;
 }
 
-int Hashtable::get(std::string *key) {
+int *Hashtable::get(std::string *key) {
     int i = 0;
     int hashKey = -1;
     do {
         hashKey = hash(key, i++);
 
-        // TODO: Fix this when using pointers
         if (this->buffer[hashKey].key == NULL)
-            return -1;
+            return NULL;
 
     } while (key->compare(*(this->buffer[hashKey].key)) != 0);
 
@@ -61,6 +61,7 @@ bool Hashtable::remove(std::string *key) {
 
     // Set the key to NULL to represent deletion
     this->buffer[hashKey].key = NULL;
+    this->buffer[hashKey].value = NULL;
 
     return true;
 }
