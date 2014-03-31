@@ -32,6 +32,10 @@ def build_max_heap(nlist):
         max_heapify(nlist, i)
 
 
+# Not the most efficient way to perform a merge sort
+# because we are creating so many arrays per iteration
+# Ideally you would pass boundary markers start and end
+# and perform a heap sort within the specified region alone
 def heapsort(nlist):
 
     result = []
