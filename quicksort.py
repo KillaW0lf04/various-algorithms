@@ -9,6 +9,12 @@ def quicksort(nlist, start=0, end=-1):
     if start >= end:
         return
 
+    # NOTE: Choosing a random pivot is theoretically better as it
+    # prevents worst case O(n^2) time complexity from occurring in
+    # cases where the last element is also the largest element (Which
+    # is the case in already sorted lists for example)
+    # TODO!
+
     # Choose the last item as the mid value
     mid_value = nlist[end]
     mid = start
