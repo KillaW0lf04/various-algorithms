@@ -11,8 +11,8 @@ def test_build_binary_tree():
         current = q[0]
         q = q[1:]
 
-        left = current.get_left()
-        right = current.get_right()
+        left = current.left
+        right = current.right
 
         if left:
             assert current.value > left.value

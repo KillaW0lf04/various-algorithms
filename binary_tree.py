@@ -3,38 +3,32 @@ class BinaryNode(object):
 
     def __init__(self, value):
         self.value = value  # Store some arbitrary value
-        self._left = None
-        self._right = None
-
-    def get_left(self):
-        return self._left
-
-    def get_right(self):
-        return self._right
+        self.left = None
+        self.right = None
 
     def add_child(self, value):
         if value < self.value:
-            if self._left is None:
-                self._left = BinaryNode(value)
+            if self.left is None:
+                self.left = BinaryNode(value)
             else:
-                self._left.add_child(value)
+                self.left.add_child(value)
         else:
-            if self._right is None:
-                self._right = BinaryNode(value)
+            if self.right is None:
+                self.right = BinaryNode(value)
             else:
-                self._right.add_child(value)
+                self.right.add_child(value)
 
     def depth(self):
         children = [0]
-        if self._left is not None:
-            children.append(self._left.depth())
-        if self._right is not None:
-            children.append(self._right.depth())
+        if self.left is not None:
+            children.append(self.left.depth())
+        if self.right is not None:
+            children.append(self.right.depth())
 
         return 1 + max(children)
 
     def __str__(self):
-        return '%s -> (%s, %s)' % (self.value, self._left, self._right)
+        return '%s -> (%s, %s)' % (self.value, self.left, self.right)
 
 
 def build_binary_tree(nlist):
@@ -50,21 +44,21 @@ def build_binary_tree(nlist):
 
 
 def inorder(tree, result):
-    if tree.get_left():
-        inorder(tree.get_left(), result)
+    if tree.left:
+        inorder(tree.left, result)
 
     result.append(tree.value)
 
-    if tree.get_right():
-        inorder(tree.get_right(), result)
+    if tree.right:
+        inorder(tree.right, result)
 
 
 def postorder(tree, result):
-    if tree.get_left():
-        postorder(tree.get_left(), result)
+    if tree.left:
+        postorder(tree.left, result)
 
-    if tree.get_right():
-        postorder(tree.get_right(), result)
+    if tree.right:
+        postorder(tree.right, result)
 
     result.append(tree.value)
 
@@ -72,11 +66,11 @@ def postorder(tree, result):
 def preorder(tree, result):
     result.append(tree.value)
 
-    if tree.get_left():
-        preorder(tree.get_left(), result)
+    if tree.left:
+        preorder(tree.left, result)
 
-    if tree.get_right():
-        preorder(tree.get_right(), result)
+    if tree.right:
+        preorder(tree.right, result)
 
 
 # Drawing the tree should be performed using preorder
