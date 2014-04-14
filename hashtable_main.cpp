@@ -3,13 +3,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "heapsort.h"
-#include "quicksort.h"
 #include "hashtable.h"
 
 int main(int argc, char *argv[]) {
 
-    Hashtable *table = new Hashtable();
+    Hashtable<int> *table = new Hashtable<int>(10);
 
     std::string *key1 = new std::string("michael");
     int value1 = 25;
