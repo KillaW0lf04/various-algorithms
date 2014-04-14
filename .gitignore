@@ -1,3 +1,12 @@
+# Linux
+*.autosave
+*.*~
+*.s
+*.o
+
+# Binaries
+runhashtabletest
+
 # Qt-Creator
 *.user
 
