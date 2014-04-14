@@ -35,9 +35,13 @@ def quicksort(nlist, start=0, end=-1):
 
 if __name__ == '__main__':
 
+    import time
     import random
     size = 3000
     a = random.sample(range(0, size), size)
+
+    t0 = time.time()
     quicksort(a)
+    print('Sort Operation took %0.1f seconds for %d items' % (time.time() - t0, size))
 
     print(a)
