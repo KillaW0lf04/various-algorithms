@@ -1,10 +1,14 @@
 #include "hashtable.h"
 
-Hashtable::Hashtable()
+Hashtable::Hashtable(int capacity)
 {
-    this->buffer = static_cast<HashKey*>(calloc(100, sizeof(HashKey)));
+    this->buffer = static_cast<HashKey*>(calloc(capacity, sizeof(HashKey)));
     this->count = 0;
-    this->capacity = 100;
+    this->capacity = capacity;
+}
+
+Hashtable::~Hashtable() {
+    free(this->buffer);
 }
 
 uint Hashtable::size() {

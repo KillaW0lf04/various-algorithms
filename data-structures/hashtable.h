@@ -12,7 +12,8 @@ typedef struct {
 class Hashtable
 {
 public:
-    Hashtable();
+    Hashtable(int capacity=100);
+    ~Hashtable();
 
     uint size();
     void add(char *key, void *value);
