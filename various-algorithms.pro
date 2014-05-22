@@ -1,14 +1,6 @@
-TEMPLATE = app
-CONFIG += console
-CONFIG -= app_bundle
-CONFIG -= qt
+TEMPLATE = subdirs
 
-SOURCES += \
-    heapsort.cpp \
-    main.cpp \
-    quicksort.cpp \
+QMAKE_CXXFLAGS += --std=c++11
 
-HEADERS += \
-    heapsort.h \
-    quicksort.h \
-
+SUBDIRS += \
+    sorting-algorithms
