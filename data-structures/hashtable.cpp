@@ -15,9 +15,15 @@ void Hashtable::add(char *key, void *value) {
     int index;
     int seed = 0;
 
+    // NOTE ABOUT SEARCH:
+    // Use the value not the key as a terminator
+    // this is because once keys are added they are left there even
+    // when removed due to potential collided keys depending on it
+    // an unset value means that the block is empty.
+
     do {
         index = hash(key, seed++);
-    } while(this->buffer[index].key != nullptr);
+    } while(this->buffer[index].value != nullptr);
 
     // Ensure that keys passed over parameters are copied to their own memory
     this->buffer[index].key = static_cast<char*>(calloc(strlen(key), sizeof(char)));
@@ -53,8 +59,10 @@ void Hashtable::remove(char *key) {
     } while (strcmp(key, buffer[index].key) != 0);
 
     // Free and dereference the block of memory
+    // NOTE: Do not dereference the key as this is needed for
+    // any potential collided keys that may have been previously
+    // added
     free(this->buffer[index].key);
-    this->buffer[index].key = nullptr;
     this->buffer[index].value = nullptr;
 
     this->count--;
