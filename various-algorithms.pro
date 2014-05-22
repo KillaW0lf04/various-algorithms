@@ -7,10 +7,8 @@ SOURCES += \
     heapsort.cpp \
     main.cpp \
     quicksort.cpp \
-    hashtable.cpp
 
 HEADERS += \
     heapsort.h \
     quicksort.h \
-    hashtable.h
 
