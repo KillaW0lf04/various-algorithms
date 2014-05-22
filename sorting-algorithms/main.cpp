@@ -8,7 +8,7 @@
 
 #define BUFFERSIZE 100
 
-int main(int argc, char *argv[]) {
+int main() {
     int buffer[BUFFERSIZE];
 
     srand(time(NULL));
