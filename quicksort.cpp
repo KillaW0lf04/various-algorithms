@@ -9,7 +9,8 @@ void quicksort(int *buffer, int start, int end) {
     if (start >= end)
         return;
 
-    // Use the last element as the midpoint value
+    // Use a random index as the midpoint to prevent O(n^2) worst case
+    std::swap(buffer[start + rand() % (end-start)], buffer[end]);
     int x = buffer[end];
 
     // Specifies the current midpoint of the partition
