@@ -77,7 +77,6 @@ void Hashtable::remove(const std::string &key) {
     // NOTE: Do not dereference the key as this is needed for
     // any potential collided keys that may have been previously
     // added
-    free(this->buffer[index].key);
     this->buffer[index].value = nullptr;
 
     this->count--;
