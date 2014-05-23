@@ -3,12 +3,22 @@
 Hashtable::Hashtable(int capacity)
 {
     this->buffer = static_cast<HashKey*>(calloc(capacity, sizeof(HashKey)));
-    this->count = 0;
     this->capacity = capacity;
+
+    clear();
 }
 
 Hashtable::~Hashtable() {
     free(this->buffer);
+}
+
+void Hashtable::clear() {
+    for (int i=0; i<capacity; i++) {
+        this->buffer[i].key = nullptr;
+        this->buffer[i].value = nullptr;
+    }
+
+    this->count = 0;
 }
 
 uint Hashtable::size() {

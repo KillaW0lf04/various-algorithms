@@ -27,6 +27,13 @@ protected:
     Hashtable *table;
 };
 
+TEST_F(HashtableTest, ClearTest) {
+    table->clear();
+    EXPECT_EQ(0, table->size());
+    EXPECT_EQ(nullptr, table->get("michael"));
+    EXPECT_EQ(nullptr, table->get("bruce"));
+}
+
 TEST_F(HashtableTest, SizeTest) {
     EXPECT_EQ(5, table->size());
     table->remove("michael");

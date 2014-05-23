@@ -16,6 +16,7 @@ public:
     Hashtable(int capacity=100);
     ~Hashtable();
 
+    void clear();
     uint size();
     void add(const std::string &key, void *value);
     void *get(const std::string &key);
