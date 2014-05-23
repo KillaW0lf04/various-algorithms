@@ -1,6 +1,6 @@
-#ifndef QUICKSORT_H_
-#define QUICKSORT_H_
+#ifndef SORTING_ALGORITHMS_QUICKSORT_H_
+#define SORTING_ALGORITHMS_QUICKSORT_H_
 
 void quicksort(int *buffer, int start, int end);
 
-#endif  // QUICKSORT_H_
+#endif  // SORTING_ALGORITHMS_QUICKSORT_H_
