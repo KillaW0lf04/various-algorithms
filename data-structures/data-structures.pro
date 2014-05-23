@@ -7,8 +7,9 @@ QMAKE_CXXFLAGS += -std=c++11
 
 LIBS += -lgtest -lgtest_main -lpthread
 
-SOURCES += main.cpp \
-    hashtable.cpp
+SOURCES += \
+    hashtable.cpp \
+    hashtable_test.cpp
 
 HEADERS += \
     hashtable.h
