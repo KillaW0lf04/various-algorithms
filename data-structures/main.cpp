@@ -29,6 +29,8 @@ protected:
 
 TEST_F(HashtableTest, SizeTest) {
     EXPECT_EQ(5, table->size());
+    table->remove("michael");
+    EXPECT_EQ(4, table->size());
 }
 
 TEST_F(HashtableTest, GetTest) {
