@@ -9,8 +9,11 @@ LIBS += -lgtest -lgtest_main -lpthread
 
 SOURCES += \
     hashtable.cpp \
-    hashtable_test.cpp
+    hashtable_test.cpp \
+    linkedlist.cpp \
+    linkedlist_test.cpp
 
 HEADERS += \
-    hashtable.h
+    hashtable.h \
+    linkedlist.h
 
