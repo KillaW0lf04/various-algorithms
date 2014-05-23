@@ -23,25 +23,25 @@ TEST(hashtable_test, add_get_test) {
     table->add("bruce", &age5);
 
     // Ensure added items are found
-    EXPECT_EQ(*((int *) table->get("michael")), age1);
-    EXPECT_EQ(*((int *) table->get("christina")), age2);
-    EXPECT_EQ(*((int *) table->get("lorraine")), age3);
-    EXPECT_EQ(*((int *) table->get("stephanie")), age4);
-    EXPECT_EQ(*((int *) table->get("bruce")), age5);
+    EXPECT_EQ(age1, *((int *) table->get("michael")));
+    EXPECT_EQ(age2, *((int *) table->get("christina")));
+    EXPECT_EQ(age3, *((int *) table->get("lorraine")));
+    EXPECT_EQ(age4, *((int *) table->get("stephanie")));
+    EXPECT_EQ(age5, *((int *) table->get("bruce")));
 
     // Size check
-    EXPECT_EQ(table->size(), 5);
+    EXPECT_EQ(5, table->size());
 
     // Case Sensitive check
-    EXPECT_EQ(table->get("CHRISTINA"), nullptr);
+    EXPECT_EQ(nullptr, table->get("CHRISTINA"));
 
     // Non-Existant check
-    EXPECT_EQ(table->get("idontexist"), nullptr);
+    EXPECT_EQ(nullptr, table->get("idontexist"));
 
     // Removal Test
     table->remove("michael");
-    EXPECT_EQ(table->get("michael"), nullptr);
-    EXPECT_EQ(table->size(), 4);
+    EXPECT_EQ(nullptr, table->get("michael"));
+    EXPECT_EQ(4, table->size());
 
     // Remove non-existant field
     table->remove("idontexist");
@@ -52,7 +52,7 @@ TEST(hashtable_test, add_get_test) {
     table->remove("stephanie");
     table->remove("bruce");
 
-    EXPECT_EQ(table->size(), 0);
+    EXPECT_EQ(0, table->size());
 
     delete table;
 }
