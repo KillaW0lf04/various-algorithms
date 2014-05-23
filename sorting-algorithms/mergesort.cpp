@@ -1,5 +1,7 @@
 #include "mergesort.h"
 
+#include <string.h>
+
 // buffer is the array to sort
 // work is a work array to use for the merge sort
 // length is the length of the buffer and work array
@@ -35,6 +37,5 @@ void mergesort(int *buffer, int *work, int length) {
         work[index++] = buffer[ptr2++];
 
     // Copy the array back to the original buffer
-    for (int i = 0; i < length; i++)
-        buffer[i] = work[i];
+    memcpy(buffer, work, sizeof(int) * length);
 }
