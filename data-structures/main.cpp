@@ -7,7 +7,7 @@
 
 using namespace std;
 
-TEST(hashtable_test, add_get_test) {
+TEST(HashtableTest, AddGetTest) {
     Hashtable *table = new Hashtable(6);
 
     int age1 = 25;
