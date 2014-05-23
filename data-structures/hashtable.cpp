@@ -1,7 +1,8 @@
 #include "hashtable.h"
 
-Hashtable::Hashtable(int capacity)
-{
+#include <string>
+
+Hashtable::Hashtable(int capacity) {
     this->buffer = static_cast<HashKey*>(calloc(capacity, sizeof(HashKey)));
     this->capacity = capacity;
 
@@ -13,7 +14,7 @@ Hashtable::~Hashtable() {
 }
 
 void Hashtable::clear() {
-    for (int i=0; i<capacity; i++) {
+    for (int i = 0; i < capacity; i++) {
         this->buffer[i].key = nullptr;
         this->buffer[i].value = nullptr;
     }
@@ -37,7 +38,7 @@ void Hashtable::add(const std::string &key, void *value) {
 
     do {
         index = hash(key, seed++);
-    } while(this->buffer[index].value != nullptr);
+    } while (this->buffer[index].value != nullptr);
 
     // Ensure that keys passed over parameters are copied to their own memory
     this->buffer[index].key = new std::string(key);
@@ -53,7 +54,6 @@ void *Hashtable::get(const std::string &key) {
         index = hash(key, seed++);
         if (this->buffer[index].key == nullptr)
             return nullptr;
-
     } while (key.compare(*this->buffer[index].key) != 0);
 
     return this->buffer[index].value;
@@ -67,7 +67,6 @@ void Hashtable::remove(const std::string &key) {
         index = hash(key, seed++);
         if (this->buffer[index].key == nullptr)
             return;
-
     } while (key.compare(*this->buffer[index].key) != 0);
 
     // Free and dereference the block of memory
