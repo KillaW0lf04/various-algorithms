@@ -26,7 +26,7 @@ uint Hashtable::size() {
     return this->count;
 }
 
-void Hashtable::add(const std::string &key, void *value) {
+void Hashtable::set(const std::string &key, void *value) {
     int index;
     int seed = 0;
 
@@ -38,7 +38,11 @@ void Hashtable::add(const std::string &key, void *value) {
 
     do {
         index = hash(key, seed++);
-    } while (this->buffer[index].value != nullptr);
+
+        // Continue searching until a free spot is found or a spot which already
+        // contains the key is found (in which case it's value will be overwritten)
+    } while (this->buffer[index].value != nullptr
+             && key.compare(*this->buffer[index].key) != 0);
 
     // Ensure that keys passed over parameters are copied to their own memory
     this->buffer[index].key = new std::string(key);

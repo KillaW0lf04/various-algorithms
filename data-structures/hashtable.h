@@ -17,7 +17,7 @@ class Hashtable {
 
     void clear();
     uint size();
-    void add(const std::string &key, void *value);
+    void set(const std::string &key, void *value);
     void *get(const std::string &key);
     void remove(const std::string &key);
 

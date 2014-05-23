@@ -12,11 +12,11 @@ protected:
     virtual void SetUp() {
         table = new Hashtable(6);
 
-        table->add("michael", &age1);
-        table->add("christina", &age2);
-        table->add("lorraine", &age3);
-        table->add("stephanie", &age4);
-        table->add("bruce", &age5);
+        table->set("michael", &age1);
+        table->set("christina", &age2);
+        table->set("lorraine", &age3);
+        table->set("stephanie", &age4);
+        table->set("bruce", &age5);
     }
 
     int age1 = 25;
@@ -38,6 +38,16 @@ TEST_F(HashtableTest, SizeTest) {
     EXPECT_EQ(5, table->size());
     table->remove("michael");
     EXPECT_EQ(4, table->size());
+}
+
+TEST_F(HashtableTest, SetTest) {
+    // Check that the expected initial value is correct
+    EXPECT_EQ(age1, *((int *) table->get("michael")));
+
+    // Re-set the value and see if it is updated
+    int newage = 500;
+    table->set("michael", &newage);
+    EXPECT_EQ(newage, *((int *) table->get("michael")));
 }
 
 TEST_F(HashtableTest, GetTest) {
