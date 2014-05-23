@@ -15,7 +15,7 @@ uint Hashtable::size() {
     return this->count;
 }
 
-void Hashtable::add(char *key, void *value) {
+void Hashtable::add(const std::string &key, void *value) {
     int index;
     int seed = 0;
 
@@ -30,14 +30,12 @@ void Hashtable::add(char *key, void *value) {
     } while(this->buffer[index].value != nullptr);
 
     // Ensure that keys passed over parameters are copied to their own memory
-    this->buffer[index].key = static_cast<char*>(calloc(strlen(key), sizeof(char)));
-    strcpy(this->buffer[index].key, key);
-
+    this->buffer[index].key = new std::string(key);
     this->buffer[index].value = value;
     this->count++;
 }
 
-void *Hashtable::get(char *key) {
+void *Hashtable::get(const std::string &key) {
     int index;
     int seed = 0;
 
@@ -46,12 +44,12 @@ void *Hashtable::get(char *key) {
         if (this->buffer[index].key == nullptr)
             return nullptr;
 
-    } while(strcmp(key, this->buffer[index].key) != 0);
+    } while (key.compare(*this->buffer[index].key) != 0);
 
     return this->buffer[index].value;
 }
 
-void Hashtable::remove(char *key) {
+void Hashtable::remove(const std::string &key) {
     int index;
     int seed = 0;
 
@@ -60,7 +58,7 @@ void Hashtable::remove(char *key) {
         if (this->buffer[index].key == nullptr)
             return;
 
-    } while (strcmp(key, buffer[index].key) != 0);
+    } while (key.compare(*this->buffer[index].key) != 0);
 
     // Free and dereference the block of memory
     // NOTE: Do not dereference the key as this is needed for
@@ -72,7 +70,7 @@ void Hashtable::remove(char *key) {
     this->count--;
 }
 
-uint Hashtable::hash(char *key, uint seed) {
+uint Hashtable::hash(const std::string &key, uint seed) {
     int total = 0;
     int index = 0;
     char value;

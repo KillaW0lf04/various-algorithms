@@ -1,11 +1,12 @@
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 
+#include <string>
 #include <string.h>
 #include <stdlib.h>
 
 typedef struct {
-    char *key;
+    std::string *key;
     void *value;
 } HashKey;
 
@@ -16,16 +17,16 @@ public:
     ~Hashtable();
 
     uint size();
-    void add(char *key, void *value);
-    void *get(char *key);
-    void remove(char *key);
+    void add(const std::string &key, void *value);
+    void *get(const std::string &key);
+    void remove(const std::string &key);
 
 private:
     HashKey *buffer;
     int count;
     int capacity;
 
-    uint hash(char *key, uint seed);
+    uint hash(const std::string &key, uint seed);
 };
 
 #endif // HASHTABLE_H
