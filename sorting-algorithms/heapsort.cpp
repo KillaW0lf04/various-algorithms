@@ -1,5 +1,12 @@
 #include "heapsort.h"
 
+/*
+ * Performs a heap sort in descending order on an array of integers
+ * Time Complexity: O(nlogn)
+ * Memory: O(1) (In-place sort)
+ * Unstable sort
+ * */
+
 #define LEFT(i) (i+1) << 1 - 1
 #define RIGHT(i) (i+1) << 1
 

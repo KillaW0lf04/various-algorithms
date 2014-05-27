@@ -1,5 +1,12 @@
 #include "mergesort.h"
 
+/*
+ * Performs a merge sort in descending order on an array of integers
+ * Time Complexity: O(nlogn)
+ * Memory: O(n)
+ * Stable sort
+ * */
+
 #include <string.h>
 
 // buffer is the array to sort

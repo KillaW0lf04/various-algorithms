@@ -1,5 +1,12 @@
 #include <algorithm>
 
+/*
+ * Performs a quicksort in descending order on an array of integers
+ * Time Complexity: O(nlogn)
+ * Memory: O(logn)
+ * Unstable
+ * */
+
 /* buffer is the array to sort
  * start specifies the first index in the subarray
  * end specifies the last index in the subarray
