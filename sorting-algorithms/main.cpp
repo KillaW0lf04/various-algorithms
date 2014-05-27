@@ -5,11 +5,15 @@
 
 #include "heapsort.h"
 #include "quicksort.h"
+#include "mergesort.h"
+#include "insertionsort.h"
+#include "bubblesort.h"
 
 #define BUFFERSIZE 100
 
 int main() {
     int buffer[BUFFERSIZE];
+    int work[BUFFERSIZE];
 
     srand(time(NULL));
 
@@ -18,7 +22,10 @@ int main() {
         buffer[i] = rand() % BUFFERSIZE;
 
     //heapsort(buffer, BUFFERSIZE);
-    quicksort(buffer, 0, BUFFERSIZE - 1);
+    //quicksort(buffer, 0, BUFFERSIZE - 1);
+    //mergesort(buffer, work, BUFFERSIZE);
+    //insertionsort(buffer, BUFFERSIZE);
+    bubblesort(buffer, BUFFERSIZE);
 
     std::cout << "Sorted list" << std::endl;
 
