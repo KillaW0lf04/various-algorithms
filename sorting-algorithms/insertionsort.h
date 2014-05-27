@@ -1,0 +1,6 @@
+#ifndef INSERTIONSORT_SORTING_ALGORITHMS_H_
+#define INSERTIONSORT_SORTING_ALGORITHMS_H_
+
+void insertionsort(int *buffer, int length);
+
+#endif  // INSERTIONSORT_SORTING_ALGORITHMS_H_
