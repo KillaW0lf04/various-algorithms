@@ -7,12 +7,14 @@ HEADERS += quicksort.h \
            heapsort.h \
            mergesort.h \
     insertionsort.h \
-    bubblesort.h
+    bubblesort.h \
+    radixsort.h
 
 SOURCES += main.cpp \
            quicksort.cpp \
            heapsort.cpp \
            mergesort.cpp \
     insertionsort.cpp \
-    bubblesort.cpp
+    bubblesort.cpp \
+    radixsort.cpp
 
