@@ -24,6 +24,21 @@ class BNode(object):
     def __repr__(self):
         return '<BNode: %d keys, %d children>' % (len(self.keys), len(self.children))
 
+    def __contains__(self, value):
+        index = 0
+        for key in self.keys:
+            if value == key:
+                return True
+            elif value < key:
+                break
+
+            index += 1
+
+        if not self.is_leaf():
+            return value in self.children[index]
+        else:
+            return False
+
     def is_leaf(self):
         return len(self.children) == 0
 
@@ -58,6 +73,9 @@ class BTree(object):
     def __repr__(self):
         return '<BTree>'
 
+    def __contains__(self, value):
+        return value in self.root
+
     def add(self, value):
         if len(self.root.keys) == 2 * t - 1:
             new_root = BNode()
@@ -69,4 +87,4 @@ class BTree(object):
             self.root = new_root
         else:
             self.root.add(value)
-            
+
