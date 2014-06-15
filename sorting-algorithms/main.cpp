@@ -9,7 +9,7 @@
 #include "bubblesort.h"
 #include "radixsort.h"
 
-#define BUFFERSIZE 20000
+#define BUFFERSIZE 50000
 #define NO_SORT_ALGS 6
 #define MAX_VALUE 1000
 
@@ -36,8 +36,18 @@ int main() {
             bubblesort,
             insertionsort,
     };
+    char *sort_names[NO_SORT_ALGS] = {
+        "Quicksort",
+        "Radix Sort",
+        "Merge Sort",
+        "Heap Sort",
+        "Bubble Sort",
+        "Insertion Sort",
+    };
 
     int buffer[BUFFERSIZE];
+
+    printf("Sorting performance for %d elements:\n", BUFFERSIZE);
 
     for (int i=0; i < NO_SORT_ALGS; i++) {
         srand(time(NULL));
@@ -50,7 +60,7 @@ int main() {
         (*sort[i])(buffer, BUFFERSIZE);
         runtime = clock() - t0;
 
-        printf("Sort Runtime = %f seconds\n", ((float) runtime) / CLOCKS_PER_SEC);
+        printf("%s Runtime = %f seconds\n", sort_names[i], ((float) runtime) / CLOCKS_PER_SEC);
     }
 
     printf("Finished\n");
