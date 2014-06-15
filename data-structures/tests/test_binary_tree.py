@@ -1,6 +1,3 @@
-from binary_tree import BinaryNode, build_binary_tree, postorder, inorder, preorder
-
-
 def test_build_binary_tree():
 
     tree = build_binary_tree(range(10))
