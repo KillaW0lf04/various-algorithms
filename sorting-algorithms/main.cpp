@@ -49,18 +49,18 @@ int main() {
 
     printf("Sorting performance for %d elements:\n", BUFFERSIZE);
 
-    for (int i=0; i < NO_SORT_ALGS; i++) {
+    for (int i = 0; i < NO_SORT_ALGS; i++) {
         srand(time(NULL));
 
         // Generate an array of random integers
-        for( int j=0; j<BUFFERSIZE; j++)
+        for (int j = 0; j < BUFFERSIZE; j++)
             buffer[j] = rand() % MAX_VALUE;
 
         t0 = clock();
         (*sort[i])(buffer, BUFFERSIZE);
         runtime = clock() - t0;
 
-        printf("%s Runtime = %f seconds\n", sort_names[i], ((float) runtime) / CLOCKS_PER_SEC);
+        printf("%s Runtime = %f seconds\n", sort_names[i], static_cast<float>(runtime) / CLOCKS_PER_SEC);
     }
 
     printf("Finished\n");
